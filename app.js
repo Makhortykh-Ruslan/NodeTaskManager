@@ -6,6 +6,10 @@ app.get("/", (req, res) => {
   res.send("Express on Vercel RUUUU");
 });
 
+app.get("/test", (req, res) => {
+  res.send("Test ");
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
