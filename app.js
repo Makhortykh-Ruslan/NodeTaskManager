@@ -1,13 +1,15 @@
 const express = require("express");
+const fs = require("fs");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Express on Vercel RUUUU");
-});
+const todos = JSON.parse(fs.readFileSync(`${__dirname}/data/test-todo.json`));
 
-app.get("/test", (req, res) => {
-  res.send("Test ");
+app.get("/api/v1/todo", (req, res) => {
+  res.status(200).json({
+    status: "Good",
+    data: todos,
+  });
 });
 
 const PORT = process.env.PORT || 5000;
