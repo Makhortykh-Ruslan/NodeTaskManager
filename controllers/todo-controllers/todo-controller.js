@@ -11,10 +11,10 @@ exports.getAllTODO = (req, res) =>
   });
 
 exports.checkTODO = (req, res, next) => {
-  if (!req.body.id || !req.body.name) {
+  if (!req.body.name) {
     return res.status(400).json({
       status: "Fail",
-      message: "Missing id or name",
+      message: "Missing name",
     });
   }
 
@@ -22,7 +22,10 @@ exports.checkTODO = (req, res, next) => {
 };
 
 exports.addTODO = (req, res) => {
-  todos.push(req.body);
+  const todo = req.body;
+  todo.id = new Date().getMilliseconds();
+
+  todos.push(todo);
 
   fs.writeFile(
     `${__dirname}/../../data/test-todo.json`,
@@ -31,7 +34,7 @@ exports.addTODO = (req, res) => {
       res.status(201).json({
         status: "Success",
         data: {
-          todo: req.body,
+          todo,
         },
       });
     },
