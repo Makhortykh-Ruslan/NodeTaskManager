@@ -5,11 +5,13 @@ const todoRouter = express.Router();
 
 todoRouter
   .route("/")
-  .get(todoControllers.getAllTODO)
-  .post(todoControllers.checkTODO, todoControllers.addTODO);
+  .get(todoControllers.getTodos)
+  .post(todoControllers.createTodo);
 
 todoRouter
   .route("/:id")
-  .get(todoControllers.checkTODOId, todoControllers.getTODOById);
+  .get(todoControllers.getByIdTodo)
+  .patch(todoControllers.updateTodo)
+  .delete(todoControllers.deleteTodo);
 
 module.exports = todoRouter;
