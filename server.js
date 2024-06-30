@@ -8,6 +8,22 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSORD
 );
 
+const todoSchema = new mongoose.Schema({
+  name: {
+    type: String,
+  },
+});
+
+const TodoModel = mongoose.model("todo", todoSchema);
+
+const todo = new TodoModel({
+  name: "tet mongo db",
+});
+
+todo.save().then((doc) => {
+  console.log('hello doc', doc);
+})
+
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
