@@ -1,10 +1,10 @@
-const app = require("./app/app");
-const mongoose = require("mongoose");
+const app = require('./app/app');
+const mongoose = require('mongoose');
 
 const PORT = process.env.PORT || 3000;
 
 const DB = process.env.DATABASE.replace(
-  "<PASSWORD>",
+  '<PASSWORD>',
   process.env.DATABASE_PASSORD
 );
 
@@ -15,7 +15,7 @@ mongoose
     useUnifiedTopology: true,
     useFindAndModify: false,
   })
-  .then(() => console.log("DB connected"));
+  .then(() => console.log('DB connected'));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

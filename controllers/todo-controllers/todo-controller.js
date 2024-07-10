@@ -1,14 +1,14 @@
-const TodoModel = require("./../../models/todo-model");
+const TodoModel = require('./../../models/todo-model');
 
 const errorResponse = (response, error, code) =>
   response.status(code).json({
-    status: "Fail",
+    status: 'Fail',
     error,
   });
 
 const successResponse = (response, data) =>
   response.status(200).json({
-    name: "Success",
+    name: 'Success',
     data,
   });
 
