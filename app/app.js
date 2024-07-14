@@ -2,7 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const { json } = require('express');
-const todoRouter = require('../routes/todoRouter');
+const todoRouter = require('./routes/todo-router');
+const userRouter = require('./routes/user-router');
 
 dotenv.config({ path: './config.env' });
 
@@ -13,6 +14,7 @@ if (process.env.NODDE_ENV === 'development') {
 }
 
 app.use(json());
+app.use('/api/v1/user', userRouter);
 app.use('/api/v1/todo', todoRouter);
 
 app.all('*', (req, res) => {
